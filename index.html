@@ -10,7 +10,7 @@
 
     <meta
         name="description"
-        content="Instituto Flávio Rocha Neuroreabilitação no Brooklin, São Paulo. Atendimento multidisciplinar em Fonoaudiologia, Fisioterapia, Psicologia, Nutrição, Farmácia Clínica e Terapia ABA."
+        content="Instituto Flávio Rocha Neuroreabilitação no Brooklin, São Paulo. Atendimento multidisciplinar em Fonoaudiologia, Fisioterapia, Psicologia, Nutrição, Farmácia Clínica e Terapia ABA. Fale com nossa equipe pelo WhatsApp."
     >
 
     <meta
@@ -21,6 +21,8 @@
     <meta name="author" content="Instituto Flávio Rocha Neuroreabilitação">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#754510">
+    <meta name="geo.region" content="BR-SP">
+    <meta name="geo.placename" content="São Paulo">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
@@ -33,7 +35,7 @@
 
     <meta
         property="og:description"
-        content="Atendimento multidisciplinar especializado, humanizado e baseado em evidências."
+        content="Atendimento multidisciplinar especializado, humanizado e baseado em evidências no Brooklin, São Paulo."
     >
 
     <meta
@@ -42,16 +44,8 @@
     >
 
     <!-- Google Fonts -->
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
@@ -65,10 +59,44 @@
     >
 
     <!-- CSS -->
-    <link
-        rel="stylesheet"
-        href="assets/css/style.css"
-    >
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- SEO local / dados estruturados -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Instituto Flávio Rocha Neuroreabilitação",
+        "description": "Atendimento multidisciplinar especializado em neuroreabilitação, com atuação humanizada e baseada em evidências.",
+        "telephone": "+55 11 2368-1802",
+        "email": "institutoflaviorocha.neuro@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Av. Santo Amaro, 5350",
+            "addressLocality": "São Paulo",
+            "addressRegion": "SP",
+            "postalCode": "04702-000",
+            "addressCountry": "BR"
+        },
+        "sameAs": [
+            "https://www.instagram.com/institutoflaviorochaoficial/"
+        ],
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "07:00",
+                "closes": "20:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Saturday",
+                "opens": "07:00",
+                "closes": "17:00"
+            }
+        ]
+    }
+    </script>
 </head>
 
 <body>
@@ -124,10 +152,10 @@
             <div class="header-actions">
 
                 <a
-                    href="#agendamento"
+                    href="#atendimento"
                     class="btn-primary header-cta"
                 >
-                    <i class="fa-regular fa-calendar-check"></i>
+                    <i class="fa-brands fa-whatsapp"></i>
                     Agendar consulta
                 </a>
 
@@ -153,82 +181,69 @@
 
     <main>
 
-    <!-- ======================================================
-         HERO
-    ======================================================= -->
+        <!-- ======================================================
+             HERO
+        ======================================================= -->
 
-    <section class="hero" id="inicio">
+        <section class="hero" id="inicio">
 
-        <div class="hero-overlay"></div>
+            <div class="hero-overlay"></div>
 
-        <div class="container hero-welcome-container">
+            <div class="container hero-welcome-container">
 
-            <div class="hero-welcome-content">
+                <div class="hero-welcome-content">
 
-                <span class="section-eyebrow hero-eyebrow">
-                    Bem-vindo ao Instituto Flávio Rocha
-                </span>
+                    <span class="section-eyebrow hero-eyebrow">
+                        Bem-vindo ao Instituto Flávio Rocha
+                    </span>
 
-                <h1 class="hero-title">
-                    Neuroreabilitação com ciência, cuidado e
-                    <span>foco na sua evolução.</span>
-                </h1>
+                    <h1 class="hero-title">
+                        Neuroreabilitação com ciência, cuidado e
+                        <span>foco na sua evolução.</span>
+                    </h1>
 
-                <p class="hero-description">
-                    Atendimento multidisciplinar especializado e humanizado,
-                    com estratégias baseadas em evidências para promover
-                    funcionalidade, autonomia e qualidade de vida.
-                </p>
+                    <p class="hero-description">
+                        Atendimento multidisciplinar especializado e humanizado,
+                        com estratégias baseadas em evidências para promover
+                        funcionalidade, autonomia e qualidade de vida.
+                    </p>
 
-                <div class="hero-actions">
+                    <div class="hero-actions">
 
-                    <a
-                        href="#agendamento"
-                        class="btn-primary"
-                    >
-                        <i class="fa-regular fa-calendar-check"></i>
-                        Agendar consulta
-                    </a>
+                        <a
+                            href="#atendimento"
+                            class="btn-primary"
+                        >
+                            <i class="fa-brands fa-whatsapp"></i>
+                            Agendar consulta
+                        </a>
 
-                    <a
-                        href="#instituto"
-                        class="btn-secondary hero-secondary"
-                    >
-                        Conheça o Instituto
-                        <i class="fa-solid fa-arrow-down"></i>
-                    </a>
-
-                </div>
-
-                <div class="hero-welcome-points">
-
-                    <div class="hero-welcome-point">
-
-                        <i class="fa-solid fa-user-doctor"></i>
-
-                        <span>
-                            Equipe multidisciplinar
-                        </span>
+                        <a
+                            href="#instituto"
+                            class="btn-secondary hero-secondary"
+                        >
+                            Conheça o Instituto
+                            <i class="fa-solid fa-arrow-down"></i>
+                        </a>
 
                     </div>
 
-                    <div class="hero-welcome-point">
+                    <div class="hero-welcome-points">
 
-                        <i class="fa-solid fa-brain"></i>
+                        <div class="hero-welcome-point">
+                            <i class="fa-solid fa-user-doctor"></i>
+                            <span>Equipe multidisciplinar</span>
+                        </div>
 
-                        <span>
-                            Baseado em evidências
-                        </span>
+                        <div class="hero-welcome-point">
+                            <i class="fa-solid fa-brain"></i>
+                            <span>Baseado em evidências</span>
+                        </div>
 
-                    </div>
-
-                    <div class="hero-welcome-point">
-
-                        <i class="fa-solid fa-location-dot"></i>
-
-                        <span>
-                            Brooklin • São Paulo
-                        </span>
+                        <div class="hero-welcome-point">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>Brooklin • São Paulo</span>
+                        </div>
 
                     </div>
 
@@ -236,9 +251,7 @@
 
             </div>
 
-        </div>
-
-    </section>
+        </section>
 
 
         <!-- ======================================================
@@ -252,34 +265,28 @@
                 <div class="institute-images">
 
                     <div class="institute-image-large">
-
                         <img
                             src="assets/img/imgescritorio.jpeg"
                             alt="Consultório do Instituto Flávio Rocha"
                             loading="lazy"
                         >
-
                     </div>
 
                     <div class="institute-image-small">
-
                         <img
                             src="assets/img/imgclinica1.jpeg"
                             alt="Estrutura interna do Instituto Flávio Rocha"
                             loading="lazy"
                         >
-
                     </div>
 
                     <div class="institute-badge">
-
                         <i class="fa-solid fa-hands-holding-circle"></i>
 
                         <span>
                             Atendimento
                             <strong>individualizado</strong>
                         </span>
-
                     </div>
 
                 </div>
@@ -319,43 +326,23 @@
                     <div class="institute-features">
 
                         <div class="institute-feature">
-
                             <i class="fa-solid fa-check"></i>
-
-                            <span>
-                                Atendimento humanizado
-                            </span>
-
+                            <span>Atendimento humanizado</span>
                         </div>
 
                         <div class="institute-feature">
-
                             <i class="fa-solid fa-check"></i>
-
-                            <span>
-                                Planejamento personalizado
-                            </span>
-
+                            <span>Planejamento personalizado</span>
                         </div>
 
                         <div class="institute-feature">
-
                             <i class="fa-solid fa-check"></i>
-
-                            <span>
-                                Abordagem multidisciplinar
-                            </span>
-
+                            <span>Abordagem multidisciplinar</span>
                         </div>
 
                         <div class="institute-feature">
-
                             <i class="fa-solid fa-check"></i>
-
-                            <span>
-                                Suporte às famílias e cuidadores
-                            </span>
-
+                            <span>Suporte às famílias e cuidadores</span>
                         </div>
 
                     </div>
@@ -413,13 +400,9 @@
                             <i class="fa-regular fa-comments"></i>
                         </div>
 
-                        <span class="specialty-number">
-                            01
-                        </span>
+                        <span class="specialty-number">01</span>
 
-                        <h3>
-                            Fonoaudiologia
-                        </h3>
+                        <h3>Fonoaudiologia</h3>
 
                         <p>
                             Atuação especializada na prevenção, avaliação e
@@ -443,13 +426,9 @@
                             <i class="fa-solid fa-person-walking"></i>
                         </div>
 
-                        <span class="specialty-number">
-                            02
-                        </span>
+                        <span class="specialty-number">02</span>
 
-                        <h3>
-                            Fisioterapia
-                        </h3>
+                        <h3>Fisioterapia</h3>
 
                         <p>
                             Atuação motora, respiratória e musculoesquelética,
@@ -472,13 +451,9 @@
                             <i class="fa-solid fa-brain"></i>
                         </div>
 
-                        <span class="specialty-number">
-                            03
-                        </span>
+                        <span class="specialty-number">03</span>
 
-                        <h3>
-                            Psicologia
-                        </h3>
+                        <h3>Psicologia</h3>
 
                         <p>
                             Suporte emocional, acolhimento e acompanhamento
@@ -501,13 +476,9 @@
                             <i class="fa-solid fa-apple-whole"></i>
                         </div>
 
-                        <span class="specialty-number">
-                            04
-                        </span>
+                        <span class="specialty-number">04</span>
 
-                        <h3>
-                            Nutrição
-                        </h3>
+                        <h3>Nutrição</h3>
 
                         <p>
                             Acompanhamento nutricional direcionado às
@@ -530,13 +501,9 @@
                             <i class="fa-solid fa-prescription-bottle-medical"></i>
                         </div>
 
-                        <span class="specialty-number">
-                            05
-                        </span>
+                        <span class="specialty-number">05</span>
 
-                        <h3>
-                            Farmácia Clínica
-                        </h3>
+                        <h3>Farmácia Clínica</h3>
 
                         <p>
                             Acompanhamento farmacoterapêutico, orientação sobre
@@ -559,13 +526,9 @@
                             <i class="fa-solid fa-puzzle-piece"></i>
                         </div>
 
-                        <span class="specialty-number">
-                            06
-                        </span>
+                        <span class="specialty-number">06</span>
 
-                        <h3>
-                            Terapia ABA
-                        </h3>
+                        <h3>Terapia ABA</h3>
 
                         <p>
                             A Análise do Comportamento Aplicada é direcionada ao
@@ -622,17 +585,13 @@
                             </div>
 
                             <div>
-
-                                <strong>
-                                    Recuperação motora e funcional
-                                </strong>
+                                <strong>Recuperação motora e funcional</strong>
 
                                 <span>
                                     Estratégias individualizadas para promover
                                     mobilidade, força, equilíbrio e independência
                                     funcional.
                                 </span>
-
                             </div>
 
                         </div>
@@ -645,17 +604,13 @@
                             </div>
 
                             <div>
-
-                                <strong>
-                                    Comunicação e deglutição
-                                </strong>
+                                <strong>Comunicação e deglutição</strong>
 
                                 <span>
                                     Intervenções voltadas à fala, linguagem,
                                     comunicação funcional e segurança durante a
                                     alimentação.
                                 </span>
-
                             </div>
 
                         </div>
@@ -668,17 +623,13 @@
                             </div>
 
                             <div>
-
-                                <strong>
-                                    Independência no cotidiano
-                                </strong>
+                                <strong>Independência no cotidiano</strong>
 
                                 <span>
                                     Desenvolvimento funcional direcionado às
                                     atividades diárias e à participação do
                                     paciente em diferentes ambientes.
                                 </span>
-
                             </div>
 
                         </div>
@@ -691,17 +642,13 @@
                             </div>
 
                             <div>
-
-                                <strong>
-                                    Acompanhamento integrado
-                                </strong>
+                                <strong>Acompanhamento integrado</strong>
 
                                 <span>
                                     Diferentes especialidades trabalhando de
                                     forma coordenada conforme os objetivos
                                     terapêuticos estabelecidos.
                                 </span>
-
                             </div>
 
                         </div>
@@ -724,10 +671,10 @@
                         </strong>
 
                         <a
-                            href="#agendamento"
+                            href="#atendimento"
                             class="btn-primary"
                         >
-                            <i class="fa-regular fa-calendar-check"></i>
+                            <i class="fa-brands fa-whatsapp"></i>
                             Agendar avaliação
                         </a>
 
@@ -776,9 +723,7 @@
                             <i class="fa-regular fa-comments"></i>
                         </div>
 
-                        <h3>
-                            Reabilitação de linguagem
-                        </h3>
+                        <h3>Reabilitação de linguagem</h3>
 
                         <p>
                             Atuação voltada para crianças com atrasos de fala e
@@ -796,9 +741,7 @@
                             <i class="fa-solid fa-book-open"></i>
                         </div>
 
-                        <h3>
-                            Suporte à aprendizagem
-                        </h3>
+                        <h3>Suporte à aprendizagem</h3>
 
                         <p>
                             Intervenções direcionadas às dificuldades de
@@ -816,9 +759,7 @@
                             <i class="fa-solid fa-school"></i>
                         </div>
 
-                        <h3>
-                            Acompanhamento escolar
-                        </h3>
+                        <h3>Acompanhamento escolar</h3>
 
                         <p>
                             Orientações e alinhamentos com escolas e educadores,
@@ -835,9 +776,7 @@
                             <i class="fa-solid fa-puzzle-piece"></i>
                         </div>
 
-                        <h3>
-                            Intervenção multidisciplinar
-                        </h3>
+                        <h3>Intervenção multidisciplinar</h3>
 
                         <p>
                             Integração entre Fonoaudiologia, Psicologia,
@@ -847,6 +786,45 @@
                         </p>
 
                     </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================================
+             BANNER DE CONVERSÃO
+        ======================================================= -->
+
+        <section class="conversion-banner-section">
+
+            <div class="container">
+
+                <div class="conversion-banner">
+
+                    <span class="conversion-banner-eyebrow">
+                        Atendimento próximo e humanizado
+                    </span>
+
+                    <h2>
+                        Tem dúvidas sobre qual atendimento é mais adequado?
+                    </h2>
+
+                    <p>
+                        Converse diretamente com nossa equipe. Entendemos sua
+                        necessidade e orientamos os próximos passos com atenção
+                        e acolhimento.
+                    </p>
+
+                    <a
+                        href="#atendimento"
+                        class="btn-primary btn-primary-light"
+                    >
+                        <i class="fa-brands fa-whatsapp"></i>
+                        Falar com a equipe
+                    </a>
 
                 </div>
 
@@ -885,9 +863,7 @@
                             <i class="fa-regular fa-heart"></i>
                         </div>
 
-                        <h3>
-                            Atendimento humanizado
-                        </h3>
+                        <h3>Atendimento humanizado</h3>
 
                         <p>
                             Cuidado individualizado, respeitando as necessidades,
@@ -904,9 +880,7 @@
                             <i class="fa-solid fa-user-group"></i>
                         </div>
 
-                        <h3>
-                            Equipe multidisciplinar
-                        </h3>
+                        <h3>Equipe multidisciplinar</h3>
 
                         <p>
                             Diferentes especialidades atuando de forma integrada
@@ -922,9 +896,7 @@
                             <i class="fa-solid fa-brain"></i>
                         </div>
 
-                        <h3>
-                            Baseado em evidências
-                        </h3>
+                        <h3>Baseado em evidências</h3>
 
                         <p>
                             Neuroreabilitação fundamentada em conhecimento
@@ -941,9 +913,7 @@
                             <i class="fa-regular fa-clipboard"></i>
                         </div>
 
-                        <h3>
-                            Planejamento personalizado
-                        </h3>
+                        <h3>Planejamento personalizado</h3>
 
                         <p>
                             Condutas definidas de acordo com a avaliação, o
@@ -960,9 +930,7 @@
                             <i class="fa-solid fa-house-medical"></i>
                         </div>
 
-                        <h3>
-                            Atendimento clínico e domiciliar
-                        </h3>
+                        <h3>Atendimento clínico e domiciliar</h3>
 
                         <p>
                             Flexibilidade de acompanhamento conforme indicação
@@ -978,9 +946,7 @@
                             <i class="fa-solid fa-people-roof"></i>
                         </div>
 
-                        <h3>
-                            Suporte às famílias
-                        </h3>
+                        <h3>Suporte às famílias</h3>
 
                         <p>
                             Orientação e acompanhamento aos familiares e
@@ -1029,46 +995,65 @@
                 </div>
 
 
-                <div class="structure-gallery">
+                <div
+                    class="structure-carousel"
+                    id="structureCarousel"
+                    aria-label="Galeria de ambientes do Instituto"
+                >
 
-                    <figure class="structure-item structure-item-large">
+                    <button
+                        type="button"
+                        class="structure-arrow structure-arrow-prev"
+                        id="structurePrev"
+                        aria-label="Foto anterior"
+                    >
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
 
-                        <img
-                            src="assets/img/imgclinica2.jpeg"
-                            alt="Consultório do Instituto Flávio Rocha"
-                            loading="lazy"
-                        >
+                    <div class="structure-stage">
 
-                    </figure>
+                        <figure class="structure-slide">
+                            <img
+                                src="assets/img/imgclinica2.jpeg"
+                                alt="Consultório do Instituto Flávio Rocha"
+                                loading="lazy"
+                            >
+                        </figure>
 
+                        <figure class="structure-slide">
+                            <img
+                                src="assets/img/imgclinica1.jpeg"
+                                alt="Recepção e ambiente interno do Instituto Flávio Rocha"
+                                loading="lazy"
+                            >
+                        </figure>
 
-                    <figure class="structure-item">
+                        <figure class="structure-slide">
+                            <img
+                                src="assets/img/imgescritorio.jpeg"
+                                alt="Espaço de atendimento do Instituto Flávio Rocha"
+                                loading="lazy"
+                            >
+                        </figure>
 
-                        <img
-                            src="assets/img/imgclinica1.jpeg"
-                            alt="Recepção do Instituto Flávio Rocha"
-                            loading="lazy"
-                        >
+                    </div>
 
-                    </figure>
+                    <button
+                        type="button"
+                        class="structure-arrow structure-arrow-next"
+                        id="structureNext"
+                        aria-label="Próxima foto"
+                    >
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
 
-
-                    <figure class="structure-item">
-
-                        <img
-                            src="assets/img/imgescritorio.jpeg"
-                            alt="Espaço de atendimento do Instituto Flávio Rocha"
-                            loading="lazy"
-                        >
-
-                    </figure>
+                    <div
+                        class="structure-dots"
+                        id="structureDots"
+                        aria-label="Navegação da galeria"
+                    ></div>
 
                 </div>
-
-                <p class="structure-gallery-note">
-                    Outros ambientes e registros da estrutura poderão ser
-                    adicionados à galeria.
-                </p>
 
             </div>
 
@@ -1076,135 +1061,253 @@
 
 
         <!-- ======================================================
-             AGENDAMENTO
+             CAPTAÇÃO / WHATSAPP
         ======================================================= -->
 
-        <section class="section booking-section" id="agendamento">
+        <section class="section lead-section" id="atendimento">
 
-            <div class="container">
+            <div class="container lead-grid">
 
-                <div class="booking-box">
+                <div class="lead-content">
 
-                    <div class="booking-content">
+                    <span class="section-eyebrow">
+                        Fale com nossa equipe
+                    </span>
 
-                        <span class="section-eyebrow">
-                            Agendamento online
-                        </span>
+                    <h2 class="section-title">
+                        Um primeiro contato mais
+                        <span>próximo e humanizado.</span>
+                    </h2>
 
-                        <h2>
-                            Encontre o atendimento adequado para a sua necessidade.
-                        </h2>
+                    <p>
+                        Conte brevemente o que você procura. Ao continuar,
+                        organizamos as informações em uma mensagem para o
+                        WhatsApp do Instituto e nossa equipe dá sequência ao
+                        atendimento diretamente com você.
+                    </p>
 
-                        <p>
-                            A proposta de agendamento permite selecionar a
-                            especialidade desejada, identificar o tipo de
-                            atendimento e consultar os horários disponíveis.
-                        </p>
+                    <div class="lead-benefits">
 
-                        <div class="booking-flow">
+                        <div class="lead-benefit">
+                            <i class="fa-brands fa-whatsapp"></i>
 
-                            <div class="booking-step">
+                            <span>
+                                <strong>Contato direto</strong>
+                                com a equipe do Instituto
+                            </span>
+                        </div>
 
-                                <span>01</span>
+                        <div class="lead-benefit">
+                            <i class="fa-solid fa-user-check"></i>
 
-                                <div>
-                                    <strong>Especialidade</strong>
-                                    <small>Escolha a área de atendimento</small>
-                                </div>
+                            <span>
+                                <strong>Atendimento humano</strong>
+                                desde a primeira conversa
+                            </span>
+                        </div>
 
-                            </div>
+                        <div class="lead-benefit">
+                            <i class="fa-solid fa-list-check"></i>
 
-                            <i class="fa-solid fa-arrow-right booking-arrow"></i>
-
-                            <div class="booking-step">
-
-                                <span>02</span>
-
-                                <div>
-                                    <strong>Atendimento</strong>
-                                    <small>Selecione a necessidade</small>
-                                </div>
-
-                            </div>
-
-                            <i class="fa-solid fa-arrow-right booking-arrow"></i>
-
-                            <div class="booking-step">
-
-                                <span>03</span>
-
-                                <div>
-                                    <strong>Data e horário</strong>
-                                    <small>Consulte a disponibilidade</small>
-                                </div>
-
-                            </div>
-
+                            <span>
+                                <strong>Mensagem organizada</strong>
+                                para agilizar o atendimento
+                            </span>
                         </div>
 
                     </div>
 
-
-                    <div class="booking-preview">
-
-                        <span class="booking-preview-label">
-                            Agendamento
-                        </span>
-
-                        <div class="booking-field">
-
-                            <label>
-                                Especialidade
-                            </label>
-
-                            <div class="booking-select-placeholder">
-
-                                <span>
-                                    Selecione uma especialidade
-                                </span>
-
-                                <i class="fa-solid fa-chevron-down"></i>
-
-                            </div>
-
-                        </div>
+                </div>
 
 
-                        <div class="booking-field">
+                <form class="lead-card" id="leadForm">
 
-                            <label>
-                                Tipo de atendimento
-                            </label>
+                    <div class="lead-card-header">
 
-                            <div class="booking-select-placeholder">
+                        <span>Como podemos ajudar?</span>
 
-                                <span>
-                                    Selecione o atendimento
-                                </span>
-
-                                <i class="fa-solid fa-chevron-down"></i>
-
-                            </div>
-
-                        </div>
-
-
-                        <button
-                            class="btn-primary btn-booking-placeholder"
-                            type="button"
-                            data-booking-placeholder
-                        >
-                            <i class="fa-regular fa-calendar"></i>
-                            Ver horários disponíveis
-                        </button>
-
-                        <small class="booking-preview-note">
-                            Integração do agendamento online em implantação.
+                        <small>
+                            Preencha os campos e continue pelo WhatsApp.
                         </small>
 
                     </div>
 
-                </div>
+                    <div class="lead-quick-actions">
+
+                        <button
+                            type="button"
+                            class="lead-quick-button"
+                            data-lead-interest="Quero agendar uma avaliação"
+                        >
+                            Agendar avaliação
+                        </button>
+
+                        <button
+                            type="button"
+                            class="lead-quick-button"
+                            data-lead-interest="Quero saber qual especialidade é indicada"
+                        >
+                            Encontrar especialidade
+                        </button>
+
+                        <button
+                            type="button"
+                            class="lead-quick-button"
+                            data-lead-interest="Quero informações sobre atendimento domiciliar"
+                        >
+                            Atendimento domiciliar
+                        </button>
+
+                    </div>
+
+                    <div class="lead-field">
+
+                        <label for="leadName">
+                            Seu nome
+                        </label>
+
+                        <input
+                            type="text"
+                            id="leadName"
+                            name="name"
+                            autocomplete="name"
+                            placeholder="Digite seu nome"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="lead-form-grid">
+
+                        <div class="lead-field">
+
+                            <label for="leadSpecialty">
+                                Especialidade de interesse
+                            </label>
+
+                            <select
+                                id="leadSpecialty"
+                                name="specialty"
+                            >
+                                <option value="">
+                                    Ainda não sei
+                                </option>
+                                <option value="Fonoaudiologia">
+                                    Fonoaudiologia
+                                </option>
+                                <option value="Fisioterapia">
+                                    Fisioterapia
+                                </option>
+                                <option value="Psicologia">
+                                    Psicologia
+                                </option>
+                                <option value="Nutrição">
+                                    Nutrição
+                                </option>
+                                <option value="Farmácia Clínica">
+                                    Farmácia Clínica
+                                </option>
+                                <option value="Terapia ABA">
+                                    Terapia ABA
+                                </option>
+                            </select>
+
+                        </div>
+
+                        <div class="lead-field">
+
+                            <label for="leadOrigin">
+                                Como conheceu o Instituto?
+                            </label>
+
+                            <select
+                                id="leadOrigin"
+                                name="origin"
+                            >
+                                <option value="">
+                                    Selecione
+                                </option>
+                                <option value="Google">
+                                    Google
+                                </option>
+                                <option value="Instagram">
+                                    Instagram
+                                </option>
+                                <option value="Indicação">
+                                    Indicação
+                                </option>
+                                <option value="Outro">
+                                    Outro
+                                </option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="lead-field">
+
+                        <label for="leadInterest">
+                            O que você gostaria de conversar?
+                        </label>
+
+                        <select
+                            id="leadInterest"
+                            name="interest"
+                            required
+                        >
+                            <option value="">
+                                Selecione uma opção
+                            </option>
+                            <option value="Quero agendar uma avaliação">
+                                Quero agendar uma avaliação
+                            </option>
+                            <option value="Quero saber qual especialidade é indicada">
+                                Quero saber qual especialidade é indicada
+                            </option>
+                            <option value="Quero informações sobre um tratamento">
+                                Quero informações sobre um tratamento
+                            </option>
+                            <option value="Quero informações sobre atendimento domiciliar">
+                                Quero informações sobre atendimento domiciliar
+                            </option>
+                            <option value="Quero falar com a equipe">
+                                Quero falar com a equipe
+                            </option>
+                        </select>
+
+                    </div>
+
+                    <div class="lead-field">
+
+                        <label for="leadMessage">
+                            Conte um pouco mais
+                            <span>opcional</span>
+                        </label>
+
+                        <textarea
+                            id="leadMessage"
+                            name="message"
+                            rows="4"
+                            placeholder="Se quiser, descreva brevemente sua necessidade."
+                        ></textarea>
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="btn-primary lead-submit"
+                    >
+                        <i class="fa-brands fa-whatsapp"></i>
+                        Continuar pelo WhatsApp
+                    </button>
+
+                    <small class="lead-privacy">
+                        Ao continuar, o WhatsApp será aberto com a mensagem
+                        preenchida. Nenhuma informação é armazenada neste site.
+                    </small>
+
+                </form>
 
             </div>
 
@@ -1212,17 +1315,17 @@
 
 
         <!-- ======================================================
-             CONTATO
+             CONTATO / LOCALIZAÇÃO
         ======================================================= -->
 
         <section class="section contact-section" id="contato">
 
-            <div class="container contact-grid">
+            <div class="container">
 
-                <div class="contact-content">
+                <div class="contact-intro">
 
                     <span class="section-eyebrow">
-                        Fale conosco
+                        Localização e contato
                     </span>
 
                     <h2 class="section-title">
@@ -1231,182 +1334,173 @@
                     </h2>
 
                     <p>
-                        Entre em contato para obter informações sobre
-                        especialidades, formas de atendimento e disponibilidade.
+                        Entre em contato para informações sobre especialidades,
+                        atendimentos e disponibilidade.
                     </p>
 
+                </div>
 
-                    <div class="contact-list">
 
-                        <a
-                            href="https://www.google.com/maps/search/?api=1&query=Av.+Santo+Amaro,+5350,+São+Paulo,+SP"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="contact-item"
-                        >
+                <div class="contact-chips">
 
-                            <div class="contact-icon">
-                                <i class="fa-solid fa-location-dot"></i>
-                            </div>
+                    <a
+                        href="tel:+551123681802"
+                        class="contact-chip"
+                    >
+                        <i class="fa-solid fa-phone"></i>
+
+                        <span>
+                            <small>Telefone</small>
+                            <strong>(11) 2368-1802</strong>
+                        </span>
+                    </a>
+
+                    <a
+                        href="https://wa.me/5511966413868?text=Olá!%20Vim%20pelo%20site%20do%20Instituto%20Flávio%20Rocha%20e%20gostaria%20de%20mais%20informações."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="contact-chip"
+                    >
+                        <i class="fa-brands fa-whatsapp"></i>
+
+                        <span>
+                            <small>WhatsApp</small>
+                            <strong>(11) 96641-3868</strong>
+                        </span>
+                    </a>
+
+                    <a
+                        href="mailto:institutoflaviorocha.neuro@gmail.com"
+                        class="contact-chip"
+                    >
+                        <i class="fa-regular fa-envelope"></i>
+
+                        <span>
+                            <small>E-mail</small>
+                            <strong>institutoflaviorocha.neuro@gmail.com</strong>
+                        </span>
+                    </a>
+
+                </div>
+
+
+                <div class="contact-logistics-grid">
+
+                    <div class="map-card">
+
+                        <iframe
+                            title="Localização do Instituto Flávio Rocha"
+                            src="https://www.google.com/maps?q=Av.%20Santo%20Amaro,%205350,%20S%C3%A3o%20Paulo,%20SP,%2004702-000&output=embed"
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            allowfullscreen
+                        ></iframe>
+
+                        <div class="map-card-footer">
 
                             <div>
-
-                                <span>
-                                    Endereço
-                                </span>
+                                <small>Endereço</small>
 
                                 <strong>
                                     Av. Santo Amaro, 5350<br>
                                     São Paulo - SP, 04702-000
                                 </strong>
-
                             </div>
 
-                        </a>
+                            <a
+                                href="https://www.google.com/maps/search/?api=1&query=Av.+Santo+Amaro,+5350,+São+Paulo,+SP"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="btn-secondary map-route-button"
+                            >
+                                <i class="fa-solid fa-route"></i>
+                                Ver rota
+                            </a>
 
-
-                        <a
-                            href="tel:+551123681802"
-                            class="contact-item"
-                        >
-
-                            <div class="contact-icon">
-                                <i class="fa-solid fa-phone"></i>
-                            </div>
-
-                            <div>
-
-                                <span>
-                                    Telefone
-                                </span>
-
-                                <strong>
-                                    (11) 2368-1802
-                                </strong>
-
-                            </div>
-
-                        </a>
-
-
-                        <a
-                            href="https://wa.me/5511966413868?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20os%20atendimentos%20do%20Instituto%20Flávio%20Rocha."
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="contact-item"
-                        >
-
-                            <div class="contact-icon">
-                                <i class="fa-brands fa-whatsapp"></i>
-                            </div>
-
-                            <div>
-
-                                <span>
-                                    WhatsApp
-                                </span>
-
-                                <strong>
-                                    (11) 96641-3868
-                                </strong>
-
-                            </div>
-
-                        </a>
-
-
-                        <a
-                            href="mailto:institutoflaviorocha.neuro@gmail.com"
-                            class="contact-item"
-                        >
-
-                            <div class="contact-icon">
-                                <i class="fa-regular fa-envelope"></i>
-                            </div>
-
-                            <div>
-
-                                <span>
-                                    E-mail
-                                </span>
-
-                                <strong>
-                                    institutoflaviorocha.neuro@gmail.com
-                                </strong>
-
-                            </div>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <div class="contact-card">
-
-                    <div class="contact-card-header">
-
-                        <span>
-                            Horário de atendimento
-                        </span>
-
-                        <i class="fa-regular fa-clock"></i>
-
-                    </div>
-
-
-                    <div class="opening-hours">
-
-                        <div class="opening-row">
-                            <span>Segunda-feira</span>
-                            <strong>07:00 – 20:00</strong>
-                        </div>
-
-                        <div class="opening-row">
-                            <span>Terça-feira</span>
-                            <strong>07:00 – 20:00</strong>
-                        </div>
-
-                        <div class="opening-row">
-                            <span>Quarta-feira</span>
-                            <strong>07:00 – 20:00</strong>
-                        </div>
-
-                        <div class="opening-row">
-                            <span>Quinta-feira</span>
-                            <strong>07:00 – 20:00</strong>
-                        </div>
-
-                        <div class="opening-row">
-                            <span>Sexta-feira</span>
-                            <strong>07:00 – 20:00</strong>
-                        </div>
-
-                        <div class="opening-row">
-                            <span>Sábado</span>
-                            <strong>07:00 – 17:00</strong>
-                        </div>
-
-                        <div class="opening-row opening-row-closed">
-                            <span>Domingo</span>
-                            <strong>Fechado</strong>
                         </div>
 
                     </div>
 
 
-                    <div class="contact-social">
+                    <div class="hours-card">
 
-                        <span>
-                            Acompanhe o Instituto
-                        </span>
+                        <div class="hours-card-header">
+
+                            <div>
+                                <small>Funcionamento</small>
+                                <h3>Horário de atendimento</h3>
+                            </div>
+
+                            <i class="fa-regular fa-clock"></i>
+
+                        </div>
+
+
+                        <div class="opening-hours">
+
+                            <div class="opening-row">
+                                <span>Segunda-feira</span>
+                                <strong>07:00 – 20:00</strong>
+                            </div>
+
+                            <div class="opening-row">
+                                <span>Terça-feira</span>
+                                <strong>07:00 – 20:00</strong>
+                            </div>
+
+                            <div class="opening-row">
+                                <span>Quarta-feira</span>
+                                <strong>07:00 – 20:00</strong>
+                            </div>
+
+
+                            <div
+                                class="opening-hours-extra"
+                                id="openingHoursExtra"
+                            >
+
+                                <div class="opening-row">
+                                    <span>Quinta-feira</span>
+                                    <strong>07:00 – 20:00</strong>
+                                </div>
+
+                                <div class="opening-row">
+                                    <span>Sexta-feira</span>
+                                    <strong>07:00 – 20:00</strong>
+                                </div>
+
+                                <div class="opening-row">
+                                    <span>Sábado</span>
+                                    <strong>07:00 – 17:00</strong>
+                                </div>
+
+                                <div class="opening-row opening-row-closed">
+                                    <span>Domingo</span>
+                                    <strong>Fechado</strong>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="hours-toggle"
+                            id="hoursToggle"
+                            aria-expanded="false"
+                            aria-controls="openingHoursExtra"
+                        >
+                            <span>Ver todos os horários</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+
 
                         <a
                             href="https://www.instagram.com/institutoflaviorochaoficial/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="Instagram do Instituto Flávio Rocha"
+                            class="hours-instagram"
                         >
                             <i class="fa-brands fa-instagram"></i>
                             @institutoflaviorochaoficial
@@ -1415,39 +1509,6 @@
                     </div>
 
                 </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ======================================================
-             CTA FINAL
-        ======================================================= -->
-
-        <section class="final-cta">
-
-            <div class="container final-cta-container">
-
-                <div>
-
-                    <span>
-                        Instituto Flávio Rocha Neuroreabilitação
-                    </span>
-
-                    <h2>
-                        Atendimento multidisciplinar para diferentes necessidades e fases da vida.
-                    </h2>
-
-                </div>
-
-                <a
-                    href="#agendamento"
-                    class="btn-primary btn-primary-light"
-                >
-                    <i class="fa-regular fa-calendar-check"></i>
-                    Agendar consulta
-                </a>
 
             </div>
 
@@ -1481,34 +1542,19 @@
 
             <div class="footer-navigation">
 
-                <strong>
-                    Navegação
-                </strong>
+                <strong>Navegação</strong>
 
-                <a href="#instituto">
-                    O Instituto
-                </a>
-
-                <a href="#especialidades">
-                    Especialidades
-                </a>
-
-                <a href="#estrutura">
-                    Estrutura
-                </a>
-
-                <a href="#agendamento">
-                    Agendamento
-                </a>
+                <a href="#instituto">O Instituto</a>
+                <a href="#especialidades">Especialidades</a>
+                <a href="#estrutura">Estrutura</a>
+                <a href="#atendimento">Fale com a equipe</a>
 
             </div>
 
 
             <div class="footer-contact">
 
-                <strong>
-                    Contato
-                </strong>
+                <strong>Contato</strong>
 
                 <a href="tel:+551123681802">
                     (11) 2368-1802
@@ -1531,9 +1577,7 @@
 
             <div class="footer-social">
 
-                <strong>
-                    Redes sociais
-                </strong>
+                <strong>Redes sociais</strong>
 
                 <a
                     href="https://www.instagram.com/institutoflaviorochaoficial/"
@@ -1589,7 +1633,7 @@
         </button>
 
         <a
-            href="https://wa.me/5511966413868?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20os%20atendimentos%20do%20Instituto%20Flávio%20Rocha."
+            href="https://wa.me/5511966413868?text=Olá!%20Vim%20pelo%20site%20do%20Instituto%20Flávio%20Rocha%20e%20gostaria%20de%20mais%20informações."
             target="_blank"
             rel="noopener noreferrer"
             class="floating-button whatsapp-button"
@@ -1606,7 +1650,6 @@
     ======================================================= -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
 
     <script src="assets/js/script.js"></script>

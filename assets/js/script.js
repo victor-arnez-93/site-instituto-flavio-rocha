@@ -27,15 +27,45 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentYear =
         document.getElementById("currentYear");
 
-    const bookingButton =
-        document.querySelector(
-            "[data-booking-placeholder]"
-        );
-
     const specialtiesCarousel =
-        document.getElementById(
-            "specialtiesCarousel"
-        );
+        document.getElementById("specialtiesCarousel");
+
+    const structureCarousel =
+        document.getElementById("structureCarousel");
+
+    const structureSlides =
+        structureCarousel
+            ? Array.from(
+                structureCarousel.querySelectorAll(".structure-slide")
+            )
+            : [];
+
+    const structurePrev =
+        document.getElementById("structurePrev");
+
+    const structureNext =
+        document.getElementById("structureNext");
+
+    const structureDots =
+        document.getElementById("structureDots");
+
+    const leadForm =
+        document.getElementById("leadForm");
+
+    const leadInterest =
+        document.getElementById("leadInterest");
+
+    const leadOrigin =
+        document.getElementById("leadOrigin");
+
+    const quickLeadButtons =
+        document.querySelectorAll("[data-lead-interest]");
+
+    const hoursToggle =
+        document.getElementById("hoursToggle");
+
+    const openingHoursExtra =
+        document.getElementById("openingHoursExtra");
 
     const prefersReducedMotion =
         window.matchMedia(
@@ -65,19 +95,10 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        if (window.scrollY > 40) {
-
-            header.classList.add(
-                "scrolled"
-            );
-
-        } else {
-
-            header.classList.remove(
-                "scrolled"
-            );
-
-        }
+        header.classList.toggle(
+            "scrolled",
+            window.scrollY > 40
+        );
 
     }
 
@@ -102,17 +123,10 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        menuToggle.classList.add(
-            "active"
-        );
+        menuToggle.classList.add("active");
+        mainNav.classList.add("active");
 
-        mainNav.classList.add(
-            "active"
-        );
-
-        document.body.classList.add(
-            "menu-open"
-        );
+        document.body.classList.add("menu-open");
 
         menuToggle.setAttribute(
             "aria-expanded",
@@ -133,17 +147,10 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        menuToggle.classList.remove(
-            "active"
-        );
+        menuToggle.classList.remove("active");
+        mainNav.classList.remove("active");
 
-        mainNav.classList.remove(
-            "active"
-        );
-
-        document.body.classList.remove(
-            "menu-open"
-        );
+        document.body.classList.remove("menu-open");
 
         menuToggle.setAttribute(
             "aria-expanded",
@@ -165,9 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
             () => {
 
                 const isOpen =
-                    mainNav.classList.contains(
-                        "active"
-                    );
+                    mainNav.classList.contains("active");
 
                 if (isOpen) {
 
@@ -249,9 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
                 const target =
-                    document.querySelector(
-                        href
-                    );
+                    document.querySelector(href);
 
                 if (!target) {
                     return;
@@ -265,17 +268,14 @@ document.addEventListener("DOMContentLoaded", () => {
                         : 0;
 
                 const targetPosition =
-                    target
-                        .getBoundingClientRect()
-                        .top +
+                    target.getBoundingClientRect().top +
                     window.scrollY -
                     headerHeight -
                     14;
 
                 window.scrollTo({
 
-                    top:
-                        targetPosition,
+                    top: targetPosition,
 
                     behavior:
                         prefersReducedMotion.matches
@@ -334,18 +334,14 @@ document.addEventListener("DOMContentLoaded", () => {
             const href =
                 link.getAttribute("href");
 
-            link.classList.remove(
-                "active"
-            );
+            link.classList.remove("active");
 
             if (
                 href ===
                 `#${currentSection}`
             ) {
 
-                link.classList.add(
-                    "active"
-                );
+                link.classList.add("active");
 
             }
 
@@ -374,19 +370,10 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        if (window.scrollY > 550) {
-
-            backToTop.classList.add(
-                "visible"
-            );
-
-        } else {
-
-            backToTop.classList.remove(
-                "visible"
-            );
-
-        }
+        backToTop.classList.toggle(
+            "visible",
+            window.scrollY > 550
+        );
 
     }
 
@@ -425,36 +412,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       AGENDAMENTO
-       AINDA SEM INTEGRAÇÃO REAL
-       ===================================================== */
-
-    if (bookingButton) {
-
-        bookingButton.setAttribute(
-            "aria-disabled",
-            "true"
-        );
-
-        bookingButton.setAttribute(
-            "title",
-            "Agendamento online em implantação"
-        );
-
-        bookingButton.addEventListener(
-            "click",
-            (event) => {
-
-                event.preventDefault();
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       CARROSSEL INFINITO
+       CARROSSEL INFINITO DE ESPECIALIDADES
        ===================================================== */
 
     if (
@@ -501,6 +459,681 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
+       CARROSSEL DA ESTRUTURA
+       ===================================================== */
+
+    let structureIndex = 0;
+    let structureTimer = null;
+
+
+    function normalizeStructureIndex(index) {
+
+        if (!structureSlides.length) {
+            return 0;
+        }
+
+        return (
+            index +
+            structureSlides.length
+        ) % structureSlides.length;
+
+    }
+
+
+    function renderStructureCarousel() {
+
+        if (!structureSlides.length) {
+            return;
+        }
+
+        const total =
+            structureSlides.length;
+
+        const previousIndex =
+            normalizeStructureIndex(
+                structureIndex - 1
+            );
+
+        const nextIndex =
+            normalizeStructureIndex(
+                structureIndex + 1
+            );
+
+
+        structureSlides.forEach(
+            (slide, index) => {
+
+                slide.classList.remove(
+                    "is-active",
+                    "is-prev",
+                    "is-next"
+                );
+
+                slide.setAttribute(
+                    "aria-hidden",
+                    "true"
+                );
+
+                if (index === structureIndex) {
+
+                    slide.classList.add(
+                        "is-active"
+                    );
+
+                    slide.setAttribute(
+                        "aria-hidden",
+                        "false"
+                    );
+
+                } else if (
+                    total > 1 &&
+                    index === previousIndex
+                ) {
+
+                    slide.classList.add(
+                        "is-prev"
+                    );
+
+                } else if (
+                    total > 1 &&
+                    index === nextIndex
+                ) {
+
+                    slide.classList.add(
+                        "is-next"
+                    );
+
+                }
+
+            }
+        );
+
+
+        if (structureDots) {
+
+            structureDots
+                .querySelectorAll(
+                    ".structure-dot"
+                )
+                .forEach(
+                    (dot, index) => {
+
+                        dot.classList.toggle(
+                            "is-active",
+                            index === structureIndex
+                        );
+
+                        dot.setAttribute(
+                            "aria-current",
+                            index === structureIndex
+                                ? "true"
+                                : "false"
+                        );
+
+                    }
+                );
+
+        }
+
+    }
+
+
+    function goToStructureSlide(index) {
+
+        structureIndex =
+            normalizeStructureIndex(index);
+
+        renderStructureCarousel();
+
+    }
+
+
+    function startStructureAutoplay() {
+
+        if (
+            prefersReducedMotion.matches ||
+            structureSlides.length < 2
+        ) {
+            return;
+        }
+
+        stopStructureAutoplay();
+
+        structureTimer =
+            window.setInterval(
+                () => {
+
+                    goToStructureSlide(
+                        structureIndex + 1
+                    );
+
+                },
+                5200
+            );
+
+    }
+
+
+    function stopStructureAutoplay() {
+
+        if (structureTimer) {
+
+            window.clearInterval(
+                structureTimer
+            );
+
+            structureTimer = null;
+
+        }
+
+    }
+
+
+    if (
+        structureCarousel &&
+        structureSlides.length
+    ) {
+
+        if (structureDots) {
+
+            structureSlides.forEach(
+                (_, index) => {
+
+                    const dot =
+                        document.createElement(
+                            "button"
+                        );
+
+                    dot.type = "button";
+
+                    dot.className =
+                        "structure-dot";
+
+                    dot.setAttribute(
+                        "aria-label",
+                        `Ir para a foto ${index + 1}`
+                    );
+
+                    dot.addEventListener(
+                        "click",
+                        () => {
+
+                            goToStructureSlide(index);
+
+                            startStructureAutoplay();
+
+                        }
+                    );
+
+                    structureDots.appendChild(
+                        dot
+                    );
+
+                }
+            );
+
+        }
+
+
+        if (structurePrev) {
+
+            structurePrev.addEventListener(
+                "click",
+                () => {
+
+                    goToStructureSlide(
+                        structureIndex - 1
+                    );
+
+                    startStructureAutoplay();
+
+                }
+            );
+
+        }
+
+
+        if (structureNext) {
+
+            structureNext.addEventListener(
+                "click",
+                () => {
+
+                    goToStructureSlide(
+                        structureIndex + 1
+                    );
+
+                    startStructureAutoplay();
+
+                }
+            );
+
+        }
+
+
+        structureCarousel.addEventListener(
+            "mouseenter",
+            stopStructureAutoplay
+        );
+
+        structureCarousel.addEventListener(
+            "mouseleave",
+            startStructureAutoplay
+        );
+
+
+        let touchStartX = 0;
+
+
+        structureCarousel.addEventListener(
+            "touchstart",
+            (event) => {
+
+                touchStartX =
+                    event.touches[0].clientX;
+
+                stopStructureAutoplay();
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+        structureCarousel.addEventListener(
+            "touchend",
+            (event) => {
+
+                const touchEndX =
+                    event.changedTouches[0].clientX;
+
+                const distance =
+                    touchEndX -
+                    touchStartX;
+
+                if (
+                    Math.abs(distance) >
+                    45
+                ) {
+
+                    if (distance > 0) {
+
+                        goToStructureSlide(
+                            structureIndex - 1
+                        );
+
+                    } else {
+
+                        goToStructureSlide(
+                            structureIndex + 1
+                        );
+
+                    }
+
+                }
+
+                startStructureAutoplay();
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+        renderStructureCarousel();
+        startStructureAutoplay();
+
+    }
+
+
+    /* =====================================================
+       HORÁRIOS EXPANSÍVEIS
+       ===================================================== */
+
+    if (
+        hoursToggle &&
+        openingHoursExtra
+    ) {
+
+        hoursToggle.addEventListener(
+            "click",
+            () => {
+
+                const isOpen =
+                    openingHoursExtra
+                        .classList
+                        .toggle("is-open");
+
+                hoursToggle
+                    .classList
+                    .toggle(
+                        "is-open",
+                        isOpen
+                    );
+
+                hoursToggle.setAttribute(
+                    "aria-expanded",
+                    isOpen
+                        ? "true"
+                        : "false"
+                );
+
+                const label =
+                    hoursToggle.querySelector(
+                        "span"
+                    );
+
+                if (label) {
+
+                    label.textContent =
+                        isOpen
+                            ? "Ocultar horários"
+                            : "Ver todos os horários";
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       CAPTAÇÃO DE LEAD / WHATSAPP
+       ===================================================== */
+
+    const urlParams =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const utmSource =
+        urlParams.get("utm_source") || "";
+
+    const utmCampaign =
+        urlParams.get("utm_campaign") || "";
+
+    const utmMedium =
+        urlParams.get("utm_medium") || "";
+
+
+    function normalizeMarketingSource(source) {
+
+        const normalized =
+            source
+                .trim()
+                .toLowerCase();
+
+        if (
+            normalized.includes("google")
+        ) {
+            return "Google";
+        }
+
+        if (
+            normalized.includes("instagram") ||
+            normalized.includes("ig") ||
+            normalized.includes("meta") ||
+            normalized.includes("facebook")
+        ) {
+            return "Instagram";
+        }
+
+        return "";
+
+    }
+
+
+    if (
+        leadOrigin &&
+        utmSource
+    ) {
+
+        const detectedSource =
+            normalizeMarketingSource(
+                utmSource
+            );
+
+        if (detectedSource) {
+
+            leadOrigin.value =
+                detectedSource;
+
+        }
+
+    }
+
+
+    quickLeadButtons.forEach(
+        (button) => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    const value =
+                        button.dataset
+                            .leadInterest || "";
+
+                    if (leadInterest) {
+
+                        leadInterest.value =
+                            value;
+
+                    }
+
+
+                    quickLeadButtons
+                        .forEach(
+                            (item) => {
+
+                                item.classList.remove(
+                                    "is-active"
+                                );
+
+                            }
+                        );
+
+                    button.classList.add(
+                        "is-active"
+                    );
+
+
+                    const nameField =
+                        document.getElementById(
+                            "leadName"
+                        );
+
+                    if (nameField) {
+
+                        nameField.focus({
+                            preventScroll: true
+                        });
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    if (leadInterest) {
+
+        leadInterest.addEventListener(
+            "change",
+            () => {
+
+                quickLeadButtons
+                    .forEach(
+                        (button) => {
+
+                            button.classList.toggle(
+                                "is-active",
+                                button.dataset.leadInterest ===
+                                leadInterest.value
+                            );
+
+                        }
+                    );
+
+            }
+        );
+
+    }
+
+
+    if (leadForm) {
+
+        leadForm.addEventListener(
+            "submit",
+            (event) => {
+
+                event.preventDefault();
+
+
+                if (
+                    !leadForm.checkValidity()
+                ) {
+
+                    leadForm.reportValidity();
+
+                    return;
+
+                }
+
+
+                const name =
+                    document
+                        .getElementById("leadName")
+                        ?.value
+                        .trim() || "";
+
+                const specialty =
+                    document
+                        .getElementById("leadSpecialty")
+                        ?.value
+                        .trim() || "";
+
+                const origin =
+                    document
+                        .getElementById("leadOrigin")
+                        ?.value
+                        .trim() || "";
+
+                const interest =
+                    document
+                        .getElementById("leadInterest")
+                        ?.value
+                        .trim() || "";
+
+                const message =
+                    document
+                        .getElementById("leadMessage")
+                        ?.value
+                        .trim() || "";
+
+
+                const lines = [
+
+                    "Olá! Vim pelo site do Instituto Flávio Rocha e gostaria de conversar com a equipe.",
+
+                    "",
+
+                    `Nome: ${name}`,
+
+                    specialty
+                        ? `Especialidade de interesse: ${specialty}`
+                        : "Especialidade de interesse: ainda não sei",
+
+                    `Motivo do contato: ${interest}`
+
+                ];
+
+
+                if (origin) {
+
+                    lines.push(
+                        `Como conheci o Instituto: ${origin}`
+                    );
+
+                }
+
+
+                if (message) {
+
+                    lines.push(
+                        "",
+                        `Mensagem: ${message}`
+                    );
+
+                }
+
+
+                if (
+                    utmSource ||
+                    utmCampaign ||
+                    utmMedium
+                ) {
+
+                    lines.push(
+                        "",
+                        "Origem da campanha:"
+                    );
+
+
+                    if (utmSource) {
+
+                        lines.push(
+                            `• Fonte: ${utmSource}`
+                        );
+
+                    }
+
+
+                    if (utmMedium) {
+
+                        lines.push(
+                            `• Mídia: ${utmMedium}`
+                        );
+
+                    }
+
+
+                    if (utmCampaign) {
+
+                        lines.push(
+                            `• Campanha: ${utmCampaign}`
+                        );
+
+                    }
+
+                }
+
+
+                const whatsappUrl =
+                    "https://wa.me/5511966413868?text=" +
+                    encodeURIComponent(
+                        lines.join("\n")
+                    );
+
+
+                window.open(
+                    whatsappUrl,
+                    "_blank",
+                    "noopener,noreferrer"
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
        ANIMAÇÕES
        ===================================================== */
 
@@ -532,16 +1165,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     heroTimeline.from(
-        ".hero-welcome-card",
+        ".hero-welcome-content",
         {
 
             opacity: 0,
 
-            y: 26,
+            y: 24,
 
-            scale: 0.985,
-
-            duration: 0.9
+            duration: 0.85
 
         }
     );
@@ -996,6 +1627,95 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
+       BANNER DE CONVERSÃO
+       ===================================================== */
+
+    const conversionBanner =
+        document.querySelector(
+            ".conversion-banner"
+        );
+
+    if (conversionBanner) {
+
+        gsap.set(
+            conversionBanner,
+            {
+
+                opacity: 0,
+
+                y: 24,
+
+                scale: 0.985
+
+            }
+        );
+
+
+        new ScrollMagic.Scene({
+
+            triggerElement:
+                conversionBanner,
+
+            triggerHook: 0.86,
+
+            reverse: false
+
+        })
+
+            .on(
+                "enter",
+                () => {
+
+                    gsap.to(
+                        conversionBanner,
+                        {
+
+                            opacity: 1,
+
+                            y: 0,
+
+                            scale: 1,
+
+                            duration: 0.8,
+
+                            ease:
+                                "power3.out"
+
+                        }
+                    );
+
+
+                    gsap.from(
+                        conversionBanner.children,
+                        {
+
+                            opacity: 0,
+
+                            y: 10,
+
+                            duration: 0.55,
+
+                            stagger: 0.08,
+
+                            delay: 0.18,
+
+                            ease:
+                                "power2.out"
+
+                        }
+                    );
+
+                }
+            )
+
+            .addTo(
+                controller
+            );
+
+    }
+
+
+    /* =====================================================
        DIFERENCIAIS
        ===================================================== */
 
@@ -1045,51 +1765,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     createRevealScene(
-        ".structure-gallery",
-        ".structure-item",
+        ".structure-carousel",
+        ".structure-carousel",
         {
 
             y: 24,
 
-            duration: 0.75,
-
-            stagger: 0.09
+            duration: 0.75
 
         }
     );
 
 
     /* =====================================================
-       AGENDAMENTO
+       CAPTAÇÃO
        ===================================================== */
 
-    const bookingTrigger =
+    const leadSection =
         document.querySelector(
-            ".booking-section"
+            ".lead-section"
         );
 
-    if (bookingTrigger) {
+    if (leadSection) {
 
         gsap.set(
-            ".booking-content",
+            ".lead-content",
             {
 
                 opacity: 0,
 
-                x: -25
+                x: -24
 
             }
         );
 
         gsap.set(
-            ".booking-preview",
+            ".lead-card",
             {
 
                 opacity: 0,
 
-                x: 25,
+                x: 24,
 
-                scale: 0.985
+                scale: 0.99
 
             }
         );
@@ -1098,9 +1816,9 @@ document.addEventListener("DOMContentLoaded", () => {
         new ScrollMagic.Scene({
 
             triggerElement:
-                bookingTrigger,
+                leadSection,
 
-            triggerHook: 0.76,
+            triggerHook: 0.78,
 
             reverse: false
 
@@ -1111,14 +1829,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 () => {
 
                     gsap.to(
-                        ".booking-content",
+                        ".lead-content",
                         {
 
                             opacity: 1,
 
                             x: 0,
 
-                            duration: 0.8,
+                            duration: 0.78,
 
                             ease:
                                 "power3.out"
@@ -1128,7 +1846,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                     gsap.to(
-                        ".booking-preview",
+                        ".lead-card",
                         {
 
                             opacity: 1,
@@ -1137,12 +1855,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
                             scale: 1,
 
-                            duration: 0.85,
+                            duration: 0.82,
 
                             delay: 0.08,
 
                             ease:
                                 "power3.out"
+
+                        }
+                    );
+
+
+                    gsap.from(
+                        ".lead-benefit",
+                        {
+
+                            opacity: 0,
+
+                            y: 10,
+
+                            duration: 0.48,
+
+                            stagger: 0.07,
+
+                            delay: 0.22,
+
+                            ease:
+                                "power2.out"
 
                         }
                     );
@@ -1161,31 +1900,59 @@ document.addEventListener("DOMContentLoaded", () => {
        CONTATO
        ===================================================== */
 
-    const contactTrigger =
+    createRevealScene(
+        ".contact-section",
+        ".contact-intro",
+        {
+
+            y: 18,
+
+            duration: 0.7
+
+        }
+    );
+
+
+    createRevealScene(
+        ".contact-chips",
+        ".contact-chip",
+        {
+
+            y: 16,
+
+            duration: 0.55,
+
+            stagger: 0.07
+
+        }
+    );
+
+
+    const contactLogistics =
         document.querySelector(
-            ".contact-section"
+            ".contact-logistics-grid"
         );
 
-    if (contactTrigger) {
+    if (contactLogistics) {
 
         gsap.set(
-            ".contact-content",
+            ".map-card",
             {
 
                 opacity: 0,
 
-                x: -24
+                x: -20
 
             }
         );
 
         gsap.set(
-            ".contact-card",
+            ".hours-card",
             {
 
                 opacity: 0,
 
-                x: 24
+                x: 20
 
             }
         );
@@ -1194,9 +1961,9 @@ document.addEventListener("DOMContentLoaded", () => {
         new ScrollMagic.Scene({
 
             triggerElement:
-                contactTrigger,
+                contactLogistics,
 
-            triggerHook: 0.78,
+            triggerHook: 0.84,
 
             reverse: false
 
@@ -1207,14 +1974,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 () => {
 
                     gsap.to(
-                        ".contact-content",
+                        ".map-card",
                         {
 
                             opacity: 1,
 
                             x: 0,
 
-                            duration: 0.75,
+                            duration: 0.7,
 
                             ease:
                                 "power3.out"
@@ -1224,14 +1991,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                     gsap.to(
-                        ".contact-card",
+                        ".hours-card",
                         {
 
                             opacity: 1,
 
                             x: 0,
 
-                            duration: 0.75,
+                            duration: 0.7,
 
                             delay: 0.08,
 
@@ -1247,138 +2014,6 @@ document.addEventListener("DOMContentLoaded", () => {
             .addTo(
                 controller
             );
-
-    }
-
-
-    /* =====================================================
-       CTA FINAL
-       ===================================================== */
-
-    createRevealScene(
-        ".final-cta",
-        ".final-cta-container > *",
-        {
-
-            y: 16,
-
-            duration: 0.65,
-
-            stagger: 0.1
-
-        }
-    );
-
-
-    /* =====================================================
-       EFEITO SUAVE NAS FOTOS
-       APENAS DESKTOP
-       ===================================================== */
-
-    if (
-        window.matchMedia(
-            "(min-width: 981px)"
-        ).matches
-    ) {
-
-        const structureImages =
-            document.querySelectorAll(
-                ".structure-item img"
-            );
-
-        structureImages.forEach(
-            (image) => {
-
-                const parent =
-                    image.closest(
-                        ".structure-item"
-                    );
-
-                if (!parent) {
-                    return;
-                }
-
-
-                parent.addEventListener(
-                    "mousemove",
-                    (event) => {
-
-                        const rect =
-                            parent
-                                .getBoundingClientRect();
-
-                        const mouseX =
-                            event.clientX -
-                            rect.left;
-
-                        const mouseY =
-                            event.clientY -
-                            rect.top;
-
-                        const x =
-                            (
-                                mouseX /
-                                rect.width -
-                                0.5
-                            ) * 4;
-
-                        const y =
-                            (
-                                mouseY /
-                                rect.height -
-                                0.5
-                            ) * 4;
-
-
-                        gsap.to(
-                            image,
-                            {
-
-                                x: x,
-
-                                y: y,
-
-                                scale: 1.04,
-
-                                duration: 0.5,
-
-                                ease:
-                                    "power2.out"
-
-                            }
-                        );
-
-                    }
-                );
-
-
-                parent.addEventListener(
-                    "mouseleave",
-                    () => {
-
-                        gsap.to(
-                            image,
-                            {
-
-                                x: 0,
-
-                                y: 0,
-
-                                scale: 1,
-
-                                duration: 0.55,
-
-                                ease:
-                                    "power2.out"
-
-                            }
-                        );
-
-                    }
-                );
-
-            }
-        );
 
     }
 
