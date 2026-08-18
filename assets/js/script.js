@@ -9,20 +9,38 @@ document.addEventListener("DOMContentLoaded", () => {
        ELEMENTOS GLOBAIS
        ===================================================== */
 
-    const header = document.getElementById("header");
-    const menuToggle = document.getElementById("menuToggle");
-    const mainNav = document.getElementById("mainNav");
-    const navLinks = document.querySelectorAll(".nav-link");
-    const backToTop = document.getElementById("backToTop");
-    const currentYear = document.getElementById("currentYear");
+    const header =
+        document.getElementById("header");
 
-    const bookingButton = document.querySelector(
-        "[data-booking-placeholder]"
-    );
+    const menuToggle =
+        document.getElementById("menuToggle");
 
-    const specialtiesCarousel = document.getElementById(
-        "specialtiesCarousel"
-    );
+    const mainNav =
+        document.getElementById("mainNav");
+
+    const navLinks =
+        document.querySelectorAll(".nav-link");
+
+    const backToTop =
+        document.getElementById("backToTop");
+
+    const currentYear =
+        document.getElementById("currentYear");
+
+    const bookingButton =
+        document.querySelector(
+            "[data-booking-placeholder]"
+        );
+
+    const specialtiesCarousel =
+        document.getElementById(
+            "specialtiesCarousel"
+        );
+
+    const prefersReducedMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        );
 
 
     /* =====================================================
@@ -49,11 +67,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (window.scrollY > 40) {
 
-            header.classList.add("scrolled");
+            header.classList.add(
+                "scrolled"
+            );
 
         } else {
 
-            header.classList.remove("scrolled");
+            header.classList.remove(
+                "scrolled"
+            );
 
         }
 
@@ -80,10 +102,17 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        menuToggle.classList.add("active");
-        mainNav.classList.add("active");
+        menuToggle.classList.add(
+            "active"
+        );
 
-        document.body.classList.add("menu-open");
+        mainNav.classList.add(
+            "active"
+        );
+
+        document.body.classList.add(
+            "menu-open"
+        );
 
         menuToggle.setAttribute(
             "aria-expanded",
@@ -104,10 +133,17 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        menuToggle.classList.remove("active");
-        mainNav.classList.remove("active");
+        menuToggle.classList.remove(
+            "active"
+        );
 
-        document.body.classList.remove("menu-open");
+        mainNav.classList.remove(
+            "active"
+        );
+
+        document.body.classList.remove(
+            "menu-open"
+        );
 
         menuToggle.setAttribute(
             "aria-expanded",
@@ -129,7 +165,9 @@ document.addEventListener("DOMContentLoaded", () => {
             () => {
 
                 const isOpen =
-                    mainNav.classList.contains("active");
+                    mainNav.classList.contains(
+                        "active"
+                    );
 
                 if (isOpen) {
 
@@ -151,11 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         link.addEventListener(
             "click",
-            () => {
-
-                closeMobileMenu();
-
-            }
+            closeMobileMenu
         );
 
     });
@@ -190,12 +224,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       ROLAGEM SUAVE DAS ÂNCORAS
+       ROLAGEM SUAVE
        ===================================================== */
 
-    const anchorLinks = document.querySelectorAll(
-        'a[href^="#"]'
-    );
+    const anchorLinks =
+        document.querySelectorAll(
+            'a[href^="#"]'
+        );
 
     anchorLinks.forEach((link) => {
 
@@ -214,7 +249,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
                 const target =
-                    document.querySelector(href);
+                    document.querySelector(
+                        href
+                    );
 
                 if (!target) {
                     return;
@@ -228,15 +265,22 @@ document.addEventListener("DOMContentLoaded", () => {
                         : 0;
 
                 const targetPosition =
-                    target.getBoundingClientRect().top +
+                    target
+                        .getBoundingClientRect()
+                        .top +
                     window.scrollY -
                     headerHeight -
-                    15;
+                    14;
 
                 window.scrollTo({
 
-                    top: targetPosition,
-                    behavior: "smooth"
+                    top:
+                        targetPosition,
+
+                    behavior:
+                        prefersReducedMotion.matches
+                            ? "auto"
+                            : "smooth"
 
                 });
 
@@ -247,15 +291,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       LINK ATIVO NO MENU
        SCROLL SPY
        ===================================================== */
 
-    const sections = Array.from(
-        document.querySelectorAll(
-            "main section[id]"
-        )
-    );
+    const sections =
+        Array.from(
+            document.querySelectorAll(
+                "main section[id]"
+            )
+        );
 
 
     function updateActiveNavigation() {
@@ -272,11 +316,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         sections.forEach((section) => {
 
-            const sectionTop =
-                section.offsetTop;
-
             if (
-                scrollPosition >= sectionTop
+                scrollPosition >=
+                section.offsetTop
             ) {
 
                 currentSection =
@@ -297,7 +339,8 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
             if (
-                href === `#${currentSection}`
+                href ===
+                `#${currentSection}`
             ) {
 
                 link.classList.add(
@@ -322,7 +365,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       BOTÃO VOLTAR AO TOPO
+       VOLTAR AO TOPO
        ===================================================== */
 
     function updateBackToTop() {
@@ -367,7 +410,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 window.scrollTo({
 
                     top: 0,
-                    behavior: "smooth"
+
+                    behavior:
+                        prefersReducedMotion.matches
+                            ? "auto"
+                            : "smooth"
 
                 });
 
@@ -407,8 +454,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       CARROSSEL INFINITO DE ESPECIALIDADES
-       DUPLICAÇÃO AUTOMÁTICA DOS CARDS
+       CARROSSEL INFINITO
        ===================================================== */
 
     if (
@@ -443,748 +489,793 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================================
-       ANIMAÇÃO INICIAL DO HERO
-       GSAP
-       ===================================================== */
-
-    if (typeof gsap !== "undefined") {
-
-        const heroTimeline =
-            gsap.timeline({
-
-                defaults: {
-
-                    ease: "power3.out"
-
-                }
-
-            });
-
-
-        heroTimeline.from(
-            ".hero-eyebrow",
-            {
-
-                opacity: 0,
-                y: 20,
-                duration: 0.7
-
-            }
-        );
-
-
-        heroTimeline.from(
-            ".hero-title",
-            {
-
-                opacity: 0,
-                y: 30,
-                duration: 0.9
-
-            },
-            "-=0.45"
-        );
-
-
-        heroTimeline.from(
-            ".hero-description",
-            {
-
-                opacity: 0,
-                y: 24,
-                duration: 0.75
-
-            },
-            "-=0.55"
-        );
-
-
-        heroTimeline.from(
-            ".hero-actions",
-            {
-
-                opacity: 0,
-                y: 18,
-                duration: 0.7
-
-            },
-            "-=0.5"
-        );
-
-
-        heroTimeline.from(
-            ".hero-highlight",
-            {
-
-                opacity: 0,
-                y: 18,
-                duration: 0.55,
-                stagger: 0.12
-
-            },
-            "-=0.4"
-        );
-
-
-        heroTimeline.from(
-            ".hero-image-main",
-            {
-
-                opacity: 0,
-                x: 35,
-                scale: 0.97,
-                duration: 1.05
-
-            },
-            "-=1"
-        );
-
-
-        heroTimeline.from(
-            ".hero-floating-card",
-            {
-
-                opacity: 0,
-                y: 22,
-                duration: 0.75
-
-            },
-            "-=0.6"
-        );
-
-
-        heroTimeline.from(
-            ".hero-detail-card",
-            {
-
-                opacity: 0,
-                scale: 0.88,
-                duration: 0.7
-
-            },
-            "-=0.65"
-        );
-
-    }
-
-
-    /* =====================================================
-       SCROLLMAGIC + GSAP
-       ANIMAÇÕES LEVES DURANTE A ROLAGEM
-       ===================================================== */
-
     if (
-        typeof ScrollMagic !== "undefined" &&
-        typeof gsap !== "undefined"
+        prefersReducedMotion.matches &&
+        specialtiesCarousel
     ) {
 
-        const controller =
-            new ScrollMagic.Controller();
-
-
-        /* -------------------------------------------------
-           FUNÇÃO GLOBAL DE REVELAÇÃO
-           ------------------------------------------------- */
-
-        function createRevealScene(
-            trigger,
-            targets,
-            options = {}
-        ) {
-
-            const triggerElement =
-                document.querySelector(trigger);
-
-            const targetElements =
-                document.querySelectorAll(
-                    targets
-                );
-
-            if (
-                !triggerElement ||
-                !targetElements.length
-            ) {
-                return;
-            }
-
-
-            gsap.set(
-                targetElements,
-                {
-
-                    opacity: 0,
-                    y: options.y ?? 28
-
-                }
-            );
-
-
-            new ScrollMagic.Scene({
-
-                triggerElement:
-                    triggerElement,
-
-                triggerHook:
-                    options.triggerHook ?? 0.82,
-
-                reverse:
-                    false
-
-            })
-
-                .on(
-                    "enter",
-                    () => {
-
-                        gsap.to(
-                            targetElements,
-                            {
-
-                                opacity: 1,
-                                y: 0,
-
-                                duration:
-                                    options.duration ?? 0.8,
-
-                                stagger:
-                                    options.stagger ?? 0.08,
-
-                                ease:
-                                    options.ease ??
-                                    "power3.out",
-
-                                clearProps:
-                                    "transform"
-
-                            }
-                        );
-
-                    }
-                )
-
-                .addTo(
-                    controller
-                );
-
-        }
-
-
-        /* -------------------------------------------------
-           SOBRE O INSTITUTO
-           ------------------------------------------------- */
-
-        const instituteTrigger =
-            document.querySelector(
-                ".institute-section"
-            );
-
-        if (instituteTrigger) {
-
-            gsap.set(
-                ".institute-images",
-                {
-
-                    opacity: 0,
-                    x: -35
-
-                }
-            );
-
-            gsap.set(
-                ".institute-content",
-                {
-
-                    opacity: 0,
-                    x: 35
-
-                }
-            );
-
-
-            new ScrollMagic.Scene({
-
-                triggerElement:
-                    instituteTrigger,
-
-                triggerHook:
-                    0.78,
-
-                reverse:
-                    false
-
-            })
-
-                .on(
-                    "enter",
-                    () => {
-
-                        gsap.to(
-                            ".institute-images",
-                            {
-
-                                opacity: 1,
-                                x: 0,
-                                duration: 0.9,
-                                ease: "power3.out"
-
-                            }
-                        );
-
-
-                        gsap.to(
-                            ".institute-content",
-                            {
-
-                                opacity: 1,
-                                x: 0,
-                                duration: 0.9,
-                                delay: 0.12,
-                                ease: "power3.out"
-
-                            }
-                        );
-
-                    }
-                )
-
-                .addTo(
-                    controller
-                );
-
-        }
-
-
-        /* -------------------------------------------------
-           ESPECIALIDADES
-           ------------------------------------------------- */
-
-        createRevealScene(
-            ".specialties-section",
-            ".specialties-section .section-heading",
-            {
-
-                y: 24,
-                duration: 0.8
-
-            }
-        );
-
-
-        /* -------------------------------------------------
-           REABILITAÇÃO
-           ------------------------------------------------- */
-
-        const rehabilitationTrigger =
-            document.querySelector(
-                ".rehabilitation-section"
-            );
-
-        if (rehabilitationTrigger) {
-
-            gsap.set(
-                ".rehabilitation-content",
-                {
-
-                    opacity: 0,
-                    x: -28
-
-                }
-            );
-
-            gsap.set(
-                ".rehabilitation-visual",
-                {
-
-                    opacity: 0,
-                    x: 28
-
-                }
-            );
-
-
-            new ScrollMagic.Scene({
-
-                triggerElement:
-                    rehabilitationTrigger,
-
-                triggerHook:
-                    0.78,
-
-                reverse:
-                    false
-
-            })
-
-                .on(
-                    "enter",
-                    () => {
-
-                        gsap.to(
-                            ".rehabilitation-content",
-                            {
-
-                                opacity: 1,
-                                x: 0,
-                                duration: 0.85,
-                                ease: "power3.out"
-
-                            }
-                        );
-
-
-                        gsap.to(
-                            ".rehabilitation-visual",
-                            {
-
-                                opacity: 1,
-                                x: 0,
-                                duration: 0.85,
-                                delay: 0.1,
-                                ease: "power3.out"
-
-                            }
-                        );
-
-
-                        gsap.from(
-                            ".rehabilitation-item",
-                            {
-
-                                opacity: 0,
-                                y: 16,
-                                duration: 0.6,
-                                stagger: 0.09,
-                                delay: 0.25,
-                                ease: "power2.out"
-
-                            }
-                        );
-
-                    }
-                )
-
-                .addTo(
-                    controller
-                );
-
-        }
-
-
-        /* -------------------------------------------------
-           LINGUAGEM
-           ------------------------------------------------- */
-
-        createRevealScene(
-            ".language-section",
-            ".language-section .section-heading",
-            {
-
-                y: 24,
-                duration: 0.75
-
-            }
-        );
-
-
-        createRevealScene(
-            ".language-grid",
-            ".language-card",
-            {
-
-                y: 28,
-                duration: 0.7,
-                stagger: 0.09
-
-            }
-        );
-
-
-        /* -------------------------------------------------
-           DIFERENCIAIS
-           ------------------------------------------------- */
-
-        createRevealScene(
-            ".differentials-section",
-            ".differentials-section .section-heading",
-            {
-
-                y: 22,
-                duration: 0.75
-
-            }
-        );
-
-
-        createRevealScene(
-            ".differentials-grid",
-            ".differential-card",
-            {
-
-                y: 26,
-                duration: 0.7,
-                stagger: 0.08
-
-            }
-        );
-
-
-        /* -------------------------------------------------
-           ESTRUTURA
-           ------------------------------------------------- */
-
-        createRevealScene(
-            ".structure-section",
-            ".structure-heading",
-            {
-
-                y: 22,
-                duration: 0.75
-
-            }
-        );
-
-
-        createRevealScene(
-            ".structure-gallery",
-            ".structure-item",
-            {
-
-                y: 28,
-                duration: 0.8,
-                stagger: 0.1
-
-            }
-        );
-
-
-        /* -------------------------------------------------
-           AGENDAMENTO
-           ------------------------------------------------- */
-
-        const bookingTrigger =
-            document.querySelector(
-                ".booking-section"
-            );
-
-        if (bookingTrigger) {
-
-            gsap.set(
-                ".booking-content",
-                {
-
-                    opacity: 0,
-                    x: -30
-
-                }
-            );
-
-            gsap.set(
-                ".booking-preview",
-                {
-
-                    opacity: 0,
-                    x: 30,
-                    scale: 0.98
-
-                }
-            );
-
-
-            new ScrollMagic.Scene({
-
-                triggerElement:
-                    bookingTrigger,
-
-                triggerHook:
-                    0.76,
-
-                reverse:
-                    false
-
-            })
-
-                .on(
-                    "enter",
-                    () => {
-
-                        gsap.to(
-                            ".booking-content",
-                            {
-
-                                opacity: 1,
-                                x: 0,
-                                duration: 0.85,
-                                ease: "power3.out"
-
-                            }
-                        );
-
-
-                        gsap.to(
-                            ".booking-preview",
-                            {
-
-                                opacity: 1,
-                                x: 0,
-                                scale: 1,
-                                duration: 0.9,
-                                delay: 0.1,
-                                ease: "power3.out"
-
-                            }
-                        );
-
-
-                        gsap.from(
-                            ".booking-step",
-                            {
-
-                                opacity: 0,
-                                y: 14,
-                                duration: 0.55,
-                                stagger: 0.1,
-                                delay: 0.25,
-                                ease: "power2.out"
-
-                            }
-                        );
-
-                    }
-                )
-
-                .addTo(
-                    controller
-                );
-
-        }
-
-
-        /* -------------------------------------------------
-           CONTATO
-           ------------------------------------------------- */
-
-        const contactTrigger =
-            document.querySelector(
-                ".contact-section"
-            );
-
-        if (contactTrigger) {
-
-            gsap.set(
-                ".contact-content",
-                {
-
-                    opacity: 0,
-                    x: -28
-
-                }
-            );
-
-            gsap.set(
-                ".contact-card",
-                {
-
-                    opacity: 0,
-                    x: 28
-
-                }
-            );
-
-
-            new ScrollMagic.Scene({
-
-                triggerElement:
-                    contactTrigger,
-
-                triggerHook:
-                    0.78,
-
-                reverse:
-                    false
-
-            })
-
-                .on(
-                    "enter",
-                    () => {
-
-                        gsap.to(
-                            ".contact-content",
-                            {
-
-                                opacity: 1,
-                                x: 0,
-                                duration: 0.8,
-                                ease: "power3.out"
-
-                            }
-                        );
-
-
-                        gsap.to(
-                            ".contact-card",
-                            {
-
-                                opacity: 1,
-                                x: 0,
-                                duration: 0.8,
-                                delay: 0.1,
-                                ease: "power3.out"
-
-                            }
-                        );
-
-
-                        gsap.from(
-                            ".contact-item",
-                            {
-
-                                opacity: 0,
-                                y: 15,
-                                duration: 0.55,
-                                stagger: 0.07,
-                                delay: 0.2,
-                                ease: "power2.out"
-
-                            }
-                        );
-
-                    }
-                )
-
-                .addTo(
-                    controller
-                );
-
-        }
-
-
-        /* -------------------------------------------------
-           CTA FINAL
-           ------------------------------------------------- */
-
-        createRevealScene(
-            ".final-cta",
-            ".final-cta-container > *",
-            {
-
-                y: 18,
-                duration: 0.7,
-                stagger: 0.12
-
-            }
-        );
+        specialtiesCarousel.style.animation =
+            "none";
 
     }
 
 
     /* =====================================================
-       EFEITO SUAVE NAS FOTOS DA ESTRUTURA
+       ANIMAÇÕES
        ===================================================== */
 
     if (
-        typeof gsap !== "undefined" &&
+        prefersReducedMotion.matches ||
+        typeof gsap === "undefined"
+    ) {
+
+        return;
+
+    }
+
+
+    /* =====================================================
+       HERO
+       ===================================================== */
+
+    const heroTimeline =
+        gsap.timeline({
+
+            defaults: {
+
+                ease:
+                    "power3.out"
+
+            }
+
+        });
+
+
+    heroTimeline.from(
+        ".hero-welcome-card",
+        {
+
+            opacity: 0,
+
+            y: 26,
+
+            scale: 0.985,
+
+            duration: 0.9
+
+        }
+    );
+
+
+    heroTimeline.from(
+        ".hero-eyebrow",
+        {
+
+            opacity: 0,
+
+            y: 14,
+
+            duration: 0.55
+
+        },
+        "-=0.55"
+    );
+
+
+    heroTimeline.from(
+        ".hero-title",
+        {
+
+            opacity: 0,
+
+            y: 20,
+
+            duration: 0.7
+
+        },
+        "-=0.42"
+    );
+
+
+    heroTimeline.from(
+        ".hero-description",
+        {
+
+            opacity: 0,
+
+            y: 16,
+
+            duration: 0.6
+
+        },
+        "-=0.45"
+    );
+
+
+    heroTimeline.from(
+        ".hero-actions",
+        {
+
+            opacity: 0,
+
+            y: 14,
+
+            duration: 0.55
+
+        },
+        "-=0.40"
+    );
+
+
+    heroTimeline.from(
+        ".hero-welcome-point",
+        {
+
+            opacity: 0,
+
+            y: 12,
+
+            duration: 0.5,
+
+            stagger: 0.08
+
+        },
+        "-=0.35"
+    );
+
+
+    /* =====================================================
+       SCROLLMAGIC
+       ===================================================== */
+
+    if (
+        typeof ScrollMagic ===
+        "undefined"
+    ) {
+
+        return;
+
+    }
+
+
+    const controller =
+        new ScrollMagic.Controller();
+
+
+    /* =====================================================
+       FUNÇÃO GLOBAL DE REVELAÇÃO
+       ===================================================== */
+
+    function createRevealScene(
+        trigger,
+        targets,
+        options = {}
+    ) {
+
+        const triggerElement =
+            document.querySelector(
+                trigger
+            );
+
+        const targetElements =
+            document.querySelectorAll(
+                targets
+            );
+
+        if (
+            !triggerElement ||
+            !targetElements.length
+        ) {
+            return;
+        }
+
+
+        gsap.set(
+            targetElements,
+            {
+
+                opacity: 0,
+
+                y:
+                    options.y ??
+                    24
+
+            }
+        );
+
+
+        new ScrollMagic.Scene({
+
+            triggerElement:
+                triggerElement,
+
+            triggerHook:
+                options.triggerHook ??
+                0.82,
+
+            reverse: false
+
+        })
+
+            .on(
+                "enter",
+                () => {
+
+                    gsap.to(
+                        targetElements,
+                        {
+
+                            opacity: 1,
+
+                            y: 0,
+
+                            duration:
+                                options.duration ??
+                                0.75,
+
+                            stagger:
+                                options.stagger ??
+                                0.07,
+
+                            ease:
+                                options.ease ??
+                                "power3.out",
+
+                            clearProps:
+                                "transform"
+
+                        }
+                    );
+
+                }
+            )
+
+            .addTo(
+                controller
+            );
+
+    }
+
+
+    /* =====================================================
+       INSTITUTO
+       ===================================================== */
+
+    const instituteTrigger =
+        document.querySelector(
+            ".institute-section"
+        );
+
+    if (instituteTrigger) {
+
+        gsap.set(
+            ".institute-images",
+            {
+
+                opacity: 0,
+
+                x: -28
+
+            }
+        );
+
+        gsap.set(
+            ".institute-content",
+            {
+
+                opacity: 0,
+
+                x: 28
+
+            }
+        );
+
+
+        new ScrollMagic.Scene({
+
+            triggerElement:
+                instituteTrigger,
+
+            triggerHook: 0.78,
+
+            reverse: false
+
+        })
+
+            .on(
+                "enter",
+                () => {
+
+                    gsap.to(
+                        ".institute-images",
+                        {
+
+                            opacity: 1,
+
+                            x: 0,
+
+                            duration: 0.85,
+
+                            ease:
+                                "power3.out"
+
+                        }
+                    );
+
+
+                    gsap.to(
+                        ".institute-content",
+                        {
+
+                            opacity: 1,
+
+                            x: 0,
+
+                            duration: 0.85,
+
+                            delay: 0.1,
+
+                            ease:
+                                "power3.out"
+
+                        }
+                    );
+
+                }
+            )
+
+            .addTo(
+                controller
+            );
+
+    }
+
+
+    /* =====================================================
+       ESPECIALIDADES
+       ===================================================== */
+
+    createRevealScene(
+        ".specialties-section",
+        ".specialties-section .section-heading",
+        {
+
+            y: 20,
+
+            duration: 0.7
+
+        }
+    );
+
+
+    /* =====================================================
+       REABILITAÇÃO
+       ===================================================== */
+
+    const rehabilitationTrigger =
+        document.querySelector(
+            ".rehabilitation-section"
+        );
+
+    if (rehabilitationTrigger) {
+
+        gsap.set(
+            ".rehabilitation-content",
+            {
+
+                opacity: 0,
+
+                x: -24
+
+            }
+        );
+
+        gsap.set(
+            ".rehabilitation-visual",
+            {
+
+                opacity: 0,
+
+                x: 24
+
+            }
+        );
+
+
+        new ScrollMagic.Scene({
+
+            triggerElement:
+                rehabilitationTrigger,
+
+            triggerHook: 0.78,
+
+            reverse: false
+
+        })
+
+            .on(
+                "enter",
+                () => {
+
+                    gsap.to(
+                        ".rehabilitation-content",
+                        {
+
+                            opacity: 1,
+
+                            x: 0,
+
+                            duration: 0.8,
+
+                            ease:
+                                "power3.out"
+
+                        }
+                    );
+
+
+                    gsap.to(
+                        ".rehabilitation-visual",
+                        {
+
+                            opacity: 1,
+
+                            x: 0,
+
+                            duration: 0.8,
+
+                            delay: 0.08,
+
+                            ease:
+                                "power3.out"
+
+                        }
+                    );
+
+
+                    gsap.from(
+                        ".rehabilitation-item",
+                        {
+
+                            opacity: 0,
+
+                            y: 12,
+
+                            duration: 0.5,
+
+                            stagger: 0.07,
+
+                            delay: 0.22,
+
+                            ease:
+                                "power2.out"
+
+                        }
+                    );
+
+                }
+            )
+
+            .addTo(
+                controller
+            );
+
+    }
+
+
+    /* =====================================================
+       LINGUAGEM
+       ===================================================== */
+
+    createRevealScene(
+        ".language-section",
+        ".language-section .section-heading",
+        {
+
+            y: 20,
+
+            duration: 0.7
+
+        }
+    );
+
+
+    createRevealScene(
+        ".language-grid",
+        ".language-card",
+        {
+
+            y: 24,
+
+            duration: 0.65,
+
+            stagger: 0.08
+
+        }
+    );
+
+
+    /* =====================================================
+       DIFERENCIAIS
+       ===================================================== */
+
+    createRevealScene(
+        ".differentials-section",
+        ".differentials-section .section-heading",
+        {
+
+            y: 20,
+
+            duration: 0.7
+
+        }
+    );
+
+
+    createRevealScene(
+        ".differentials-grid",
+        ".differential-card",
+        {
+
+            y: 22,
+
+            duration: 0.65,
+
+            stagger: 0.07
+
+        }
+    );
+
+
+    /* =====================================================
+       ESTRUTURA
+       ===================================================== */
+
+    createRevealScene(
+        ".structure-section",
+        ".structure-heading",
+        {
+
+            y: 20,
+
+            duration: 0.7
+
+        }
+    );
+
+
+    createRevealScene(
+        ".structure-gallery",
+        ".structure-item",
+        {
+
+            y: 24,
+
+            duration: 0.75,
+
+            stagger: 0.09
+
+        }
+    );
+
+
+    /* =====================================================
+       AGENDAMENTO
+       ===================================================== */
+
+    const bookingTrigger =
+        document.querySelector(
+            ".booking-section"
+        );
+
+    if (bookingTrigger) {
+
+        gsap.set(
+            ".booking-content",
+            {
+
+                opacity: 0,
+
+                x: -25
+
+            }
+        );
+
+        gsap.set(
+            ".booking-preview",
+            {
+
+                opacity: 0,
+
+                x: 25,
+
+                scale: 0.985
+
+            }
+        );
+
+
+        new ScrollMagic.Scene({
+
+            triggerElement:
+                bookingTrigger,
+
+            triggerHook: 0.76,
+
+            reverse: false
+
+        })
+
+            .on(
+                "enter",
+                () => {
+
+                    gsap.to(
+                        ".booking-content",
+                        {
+
+                            opacity: 1,
+
+                            x: 0,
+
+                            duration: 0.8,
+
+                            ease:
+                                "power3.out"
+
+                        }
+                    );
+
+
+                    gsap.to(
+                        ".booking-preview",
+                        {
+
+                            opacity: 1,
+
+                            x: 0,
+
+                            scale: 1,
+
+                            duration: 0.85,
+
+                            delay: 0.08,
+
+                            ease:
+                                "power3.out"
+
+                        }
+                    );
+
+                }
+            )
+
+            .addTo(
+                controller
+            );
+
+    }
+
+
+    /* =====================================================
+       CONTATO
+       ===================================================== */
+
+    const contactTrigger =
+        document.querySelector(
+            ".contact-section"
+        );
+
+    if (contactTrigger) {
+
+        gsap.set(
+            ".contact-content",
+            {
+
+                opacity: 0,
+
+                x: -24
+
+            }
+        );
+
+        gsap.set(
+            ".contact-card",
+            {
+
+                opacity: 0,
+
+                x: 24
+
+            }
+        );
+
+
+        new ScrollMagic.Scene({
+
+            triggerElement:
+                contactTrigger,
+
+            triggerHook: 0.78,
+
+            reverse: false
+
+        })
+
+            .on(
+                "enter",
+                () => {
+
+                    gsap.to(
+                        ".contact-content",
+                        {
+
+                            opacity: 1,
+
+                            x: 0,
+
+                            duration: 0.75,
+
+                            ease:
+                                "power3.out"
+
+                        }
+                    );
+
+
+                    gsap.to(
+                        ".contact-card",
+                        {
+
+                            opacity: 1,
+
+                            x: 0,
+
+                            duration: 0.75,
+
+                            delay: 0.08,
+
+                            ease:
+                                "power3.out"
+
+                        }
+                    );
+
+                }
+            )
+
+            .addTo(
+                controller
+            );
+
+    }
+
+
+    /* =====================================================
+       CTA FINAL
+       ===================================================== */
+
+    createRevealScene(
+        ".final-cta",
+        ".final-cta-container > *",
+        {
+
+            y: 16,
+
+            duration: 0.65,
+
+            stagger: 0.1
+
+        }
+    );
+
+
+    /* =====================================================
+       EFEITO SUAVE NAS FOTOS
+       APENAS DESKTOP
+       ===================================================== */
+
+    if (
         window.matchMedia(
             "(min-width: 981px)"
         ).matches
@@ -1213,7 +1304,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     (event) => {
 
                         const rect =
-                            parent.getBoundingClientRect();
+                            parent
+                                .getBoundingClientRect();
 
                         const mouseX =
                             event.clientX -
@@ -1223,31 +1315,35 @@ document.addEventListener("DOMContentLoaded", () => {
                             event.clientY -
                             rect.top;
 
-                        const xPercent =
+                        const x =
                             (
                                 mouseX /
                                 rect.width -
                                 0.5
-                            ) * 5;
+                            ) * 4;
 
-                        const yPercent =
+                        const y =
                             (
                                 mouseY /
                                 rect.height -
                                 0.5
-                            ) * 5;
+                            ) * 4;
 
 
                         gsap.to(
                             image,
                             {
 
-                                x: xPercent,
-                                y: yPercent,
-                                scale: 1.045,
+                                x: x,
 
-                                duration: 0.55,
-                                ease: "power2.out"
+                                y: y,
+
+                                scale: 1.04,
+
+                                duration: 0.5,
+
+                                ease:
+                                    "power2.out"
 
                             }
                         );
@@ -1265,11 +1361,15 @@ document.addEventListener("DOMContentLoaded", () => {
                             {
 
                                 x: 0,
+
                                 y: 0,
+
                                 scale: 1,
 
-                                duration: 0.6,
-                                ease: "power2.out"
+                                duration: 0.55,
+
+                                ease:
+                                    "power2.out"
 
                             }
                         );
@@ -1279,26 +1379,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
         );
-
-    }
-
-
-    /* =====================================================
-       REDUZIR ANIMAÇÕES CASO O USUÁRIO PREFIRA
-       ===================================================== */
-
-    const prefersReducedMotion =
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        );
-
-    if (
-        prefersReducedMotion.matches &&
-        specialtiesCarousel
-    ) {
-
-        specialtiesCarousel.style.animation =
-            "none";
 
     }
 
